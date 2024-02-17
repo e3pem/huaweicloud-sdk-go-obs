@@ -232,6 +232,7 @@ var (
 		"last-modified":                  true,
 		"content-range":                  true,
 		"accept-encoding":                true,
+		"user-agent":					  true,
 	}
 
 	allowedLogResponseHTTPHeaderNames = map[string]bool{
