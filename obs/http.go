@@ -379,8 +379,10 @@ func prepareReq(headers map[string][]string, req, lastRequest *http.Request, cli
 
 	lastRequest = req
 
-	userAgent := prepareAgentHeader(clientUserAgent)
-	req.Header[HEADER_USER_AGENT_CAMEL] = []string{userAgent}
+	if _, ok := req.Header[HEADER_USER_AGENT_CAMEL]; !ok {
+		userAgent := prepareAgentHeader(clientUserAgent)
+		req.Header[HEADER_USER_AGENT_CAMEL] = []string{userAgent}
+	}
 
 	if lastRequest != nil {
 		req.Host = lastRequest.Host
